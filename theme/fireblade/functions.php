@@ -2,8 +2,6 @@
 /**
  * Functions and definitions
  *
- * Functions that are not pluggable (not wrapped in function_exists()) are
- * instead attached to a filter or action hook.
  *
  */
 
@@ -12,13 +10,7 @@ if ( version_compare( $GLOBALS['wp_version'], '4.4-alpha', '<' ) ) {
 }
 
 if ( ! function_exists( 'fireblade_setup' ) ) :
-/**
- *
- * Note that this function is hooked into the after_setup_theme hook, which
- * runs before the init hook. The init hook is too late for some features, such
- * as indicating support for post thumbnails.
- *
- */
+
 function fireblade_setup() {
 	/*
 	 * Make theme available for translation.
@@ -36,7 +28,6 @@ function fireblade_setup() {
 	/*
 	 * Enable support for custom logo.
 	 *
-	 *  @since Twenty Sixteen 1.2
 	 */
 	add_theme_support( 'custom-logo', array(
 		'height'      => 240,
@@ -102,7 +93,6 @@ add_action( 'after_setup_theme', 'fireblade_setup' );
  *
  * Priority 0 to make it available to lower priority callbacks.
  *
- * @global int $content_width
  *
  */
 function fireblade_content_width() {
